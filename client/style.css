@@ -1,0 +1,9 @@
+.backgroundBlack{
+    background-color: black;
+    color: white;
+}
+
+.backgroundDefault{
+    background-color: white;
+    color: black;
+}
