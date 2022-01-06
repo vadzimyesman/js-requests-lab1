@@ -12,7 +12,8 @@
 */
 
 // CODE HERE
-let sayHelloButton = document.querySelector("#say-hello-button")
+const sayHelloButton = document.querySelector("#say-hello-button")
+const pContainer = document.querySelector('body')
 
 
 // PROBLEM 2
@@ -81,15 +82,31 @@ sayHelloButton.addEventListener("click",sayHello)
     Handle the promise that's returned with a .then, which you should pass a callback function to. Inside the callback function,
      console.log the response's data (in the intermediate instructions we'll come back to this function and add HTML).
 */ 
+/* 
+    Back in the ohMy function on Problem 5,
+     replace the console log in the promise's callback with a for loop that loops over res.data. 
 
+    On each iteration of the loop, create a new p element.
+     Set its textContent equal the string at the current index (i) and then append the new p element onto the document's body. 
+*/
 const ohMy = () => {
     // YOUR CODE HERE
     axios.get('http://localhost:3000/animals').then((res)=>{
-        console.log(res.data)
+        
+        for (let i=0;i<res.data.length;i++){
+           
+            let child=document.createElement('p')
+            child.textContent=res.data[i]
+            pContainer.appendChild(child)
+        
+        }
+        console.log(pContainer)
     })
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
+
+
 
 
 // PROBLEM 6 
@@ -156,9 +173,11 @@ document.getElementById('query-button').addEventListener("click",attachQuery)
 
 // PROBLEM 9
 /* 
-    Back in the ohMy function on Problem 5, replace the console log in the promise's callback with a for loop that loops over res.data. 
+    Back in the ohMy function on Problem 5,
+     replace the console log in the promise's callback with a for loop that loops over res.data. 
 
-    On each iteration of the loop, create a new p element. Set its textContent equal the string at the current index (i) and then append the new p element onto the document's body. 
+    On each iteration of the loop, create a new p element.
+     Set its textContent equal the string at the current index (i) and then append the new p element onto the document's body. 
 */
 
 // Code in the ohMy function in Problem 5
